@@ -32,8 +32,8 @@ public class BaseParamMapper : IMappingStrategy
 
     protected static string GetParamToMap(string oscAddress)
     {
-        var oscUrlSplit = oscAddress.Split("/");
-        return oscUrlSplit[^1];
+        var oscUrlSplit = oscAddress.Split('/');
+        return oscUrlSplit[oscUrlSplit.Length - 1];
     }
 
     public virtual void UpdateVRCFTEyeData(ref UnifiedEyeData eyeData, ref UnifiedExpressionShape[] eyeShapes)

@@ -34,7 +34,7 @@ public struct Config
         get => _squeezeThresholdV1;
         set
         {
-            _squeezeThresholdV1 = new[] { Math.Clamp(value[0], 0f, 1f), Math.Clamp(value[1], 0f, 2f) };
+            _squeezeThresholdV1 = new[] { MathUtils.Clamp(value[0], 0f, 1f), MathUtils.Clamp(value[1], 0f, 2f) };
         }
     }
     
@@ -49,7 +49,7 @@ public struct Config
         get => _widenThresholdV1;
         set
         {
-            _widenThresholdV1 = new[] { Math.Clamp(value[0], 0f, 1f), Math.Clamp(value[1], 0f, 2f) };
+            _widenThresholdV1 = new[] { MathUtils.Clamp(value[0], 0f, 1f), MathUtils.Clamp(value[1], 0f, 2f) };
         }
     }
     
@@ -59,7 +59,7 @@ public struct Config
         get => _squeezeThresholdV2;
         set
         {
-            _squeezeThresholdV2 = new[] { Math.Clamp(value[0], 0f, 1f), Math.Clamp(value[1], -2f, 0f) };
+            _squeezeThresholdV2 = new[] { MathUtils.Clamp(value[0], 0f, 1f), MathUtils.Clamp(value[1], -2f, 0f) };
         }
     }
     
@@ -69,7 +69,7 @@ public struct Config
         get => _widenThresholdV2;
         set
         {
-            _widenThresholdV2 = new[] { Math.Clamp(value[0], 0f, 1f), Math.Clamp(value[1], 0f, 2f) };
+            _widenThresholdV2 = new[] { MathUtils.Clamp(value[0], 0f, 1f), MathUtils.Clamp(value[1], 0f, 2f) };
         }
     }
     
@@ -80,7 +80,7 @@ public struct Config
     public float OutputMultiplier
     {
         get => _outputMultiplier;
-        set => _outputMultiplier = Math.Clamp(value, 0f, 2f);
+        set => _outputMultiplier = MathUtils.Clamp(value, 0f, 2f);
     }
 
     [JsonInclude] public float EyebrowThresholdRising;
@@ -232,7 +232,7 @@ public class ETVRConfigManager
 
         object boxedConfig = _config;
 
-        var minMaxIndice = OSCFieldName.Split("_").Last() == "min" ? 1 : 0;
+        var minMaxIndice = OSCFieldName.Split('_').Last() == "min" ? 1 : 0;
         var valueToPreserve = ((Array)oldValueInfo).GetValue(minMaxIndice)!;
 
         // TODO I kinda hate this, preferably this should support any type, but I don't have any 

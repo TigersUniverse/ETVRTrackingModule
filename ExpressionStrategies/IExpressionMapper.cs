@@ -1,6 +1,4 @@
-﻿using VRCFaceTracking.Core.Params.Data;
-
-namespace ETVRTrackingModule.ExpressionStrategies;
+﻿namespace ETVRTrackingModule.ExpressionStrategies;
 
 public interface IMappingStrategy
 {

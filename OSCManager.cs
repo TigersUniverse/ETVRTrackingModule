@@ -125,7 +125,7 @@ namespace ETVRTrackingModule
              * we're already getting the value in OSCMessage DTO
              * we also know that it is a command, let's verify what to set and do it. 
             ***/
-            var parts = oscMessage.address.Split("/");
+            var parts = oscMessage.address.Split('/');
             
             if (parts[2].ToLower() != "set")
             {
@@ -214,16 +214,23 @@ namespace ETVRTrackingModule
             }
             return buffer;
         }
+        
+        byte[] SubArray(byte[] data, int index, int length)
+        {
+            byte[] result = new byte[length];
+            Array.Copy(data, index, result, 0, length);
+            return result;
+        }
 
         float ParseOSCFloat(byte[] buffer, int length, ref int step)
         {
-            var valueSection = ConvertToBigEndian(buffer[step..length]);
+            byte[] valueSection = SubArray(buffer, step, length - step);
             float OSCValue = BitConverter.ToSingle(valueSection, 0);
             return OSCValue;
         }
 
         int ParseOSCInt(byte[] buffer, int length, ref int step) {
-            var valueSection = ConvertToBigEndian(buffer[step..length]);
+            byte[] valueSection = SubArray(buffer, step, length - step);
             int OSCValue = BitConverter.ToInt32(valueSection, 0);
             return OSCValue;
         }

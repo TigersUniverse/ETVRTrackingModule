@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.Logging;
 using VRCFaceTracking;
-using VRCFaceTracking.Core.Library;
 
 namespace ETVRTrackingModule
 {
