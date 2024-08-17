@@ -224,7 +224,7 @@ namespace ETVRTrackingModule
 
         float ParseOSCFloat(byte[] buffer, int length, ref int step)
         {
-            byte[] valueSection = SubArray(buffer, step, length - step);
+            byte[] valueSection = ConvertToBigEndian(SubArray(buffer, step, length - step));
             float OSCValue = BitConverter.ToSingle(valueSection, 0);
             return OSCValue;
         }
